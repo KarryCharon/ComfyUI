@@ -65,6 +65,10 @@ async def compress_body(request: web.Request, handler):
         return response
     if response.body and "gzip" in accept_encoding:
         response.enable_compression()
+        compress_size = args.compres_response_body_size
+        compress_size *= 1024 * 1024  # To MB
+        compress_size = max(1024, compress_size)
+        response._zlib_executor_size = compress_size
     return response
 
 

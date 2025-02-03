@@ -181,6 +181,8 @@ parser.add_argument("--user-directory", type=is_valid_directory, default=None, h
 
 parser.add_argument("--disable-compres-response-body", action="store_true", help="Disable compressing response body.")
 
+parser.add_argument("--compres-response-body-size", type=int, default=10, help="Compressing response body size limit(MB).")
+
 if comfy.options.args_parsing:
     args = parser.parse_args()
 else:
